@@ -1,6 +1,4 @@
-# Titanic — Kaggle Competition Solution
-
-Задача — бинарная классификация: предсказать выжил ли пассажир (`Survived = 1`) или нет (`Survived = 0`).
+# Titanic
 
 ---
 
