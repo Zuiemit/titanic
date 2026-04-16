@@ -1,0 +1,4 @@
+ensemble,accuracy
+stacking,0.8945
+weighted,0.8586
+voting,0.8575

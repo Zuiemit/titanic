@@ -1,0 +1,4 @@
+hidden_sizes,dropout,activation,epochs,batch_size,learning_rate,weight_decay,patience,scheduler,device,optimizer,accuracy,roc_auc,f1
+"[256, 128, 64]",0.3,relu,50,64,0.001,0.0001,10,cosine,cpu,RMSprop,0.8249,0.8747,0.7545
+"[256, 128, 64]",0.3,relu,50,32,0.0001,0.0001,15,cosine,cpu,AdamW,0.826,0.8678,0.7673
+"[256, 128, 64]",0.3,relu,50,32,0.0001,0.0001,15,cosine,cpu,AdamW,0.826,0.8678,0.7673
