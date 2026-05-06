@@ -23,7 +23,6 @@ def run() -> dict:
     results = solver.fit(X_train, y_train)
     solver.fit_ensemble(X_train, y_train)
     preds = solver.predict_ensemble(X_test)
-    results = solver.fit(X_train, y_train)
     submission = pd.DataFrame({
         config.id_col:     df_test[config.id_col],
         config.target_col: preds,
