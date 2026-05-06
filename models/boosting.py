@@ -37,5 +37,5 @@ def train_xgb(
     params: dict,
 ) -> xgb.XGBClassifier:
     model = xgb.XGBClassifier(**params)
-    model.fit(X_train, y_train, eval_set=(X_val, y_val))
+    model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)
     return model

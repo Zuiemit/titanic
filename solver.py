@@ -249,9 +249,6 @@ class Solver:
             fold_models.append(model)
             fold_scalers.append(scaler)
 
-            print(f'  Fold {fold+1}: acc={acc_list[-1]:.4f}  '
-                  f'auc={auc_list[-1]:.4f}  f1={f1_list[-1]:.4f}')
-
         self.models[model_name]  = fold_models
         self.scalers[model_name] = fold_scalers
         self.results[model_name] = {
@@ -263,6 +260,3 @@ class Solver:
         }
         scores_to_print = {k: v for k, v in self.results[model_name].items() if k != 'oof_preds'}
         print_scores(f'{model_name} ИТОГО', scores_to_print)
-
-    def experiment_dnn(X, y):
-        return None
