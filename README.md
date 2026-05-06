@@ -133,15 +133,17 @@ dnn_params = {
 ## Результаты
 
 
-Обучаем: xgb  (device=cpu)
-==================================================
-  Fold 1: acc=0.8715  auc=0.9132  f1=0.8217
-  Fold 2: acc=0.8596  auc=0.8941  f1=0.8092
-  Fold 3: acc=0.8034  auc=0.8458  f1=0.7200
-  Fold 4: acc=0.8315  auc=0.8807  f1=0.7692
-  Fold 5: acc=0.8371  auc=0.8876  f1=0.7752
+<pre>
+Обучаем: xgb (device=cpu)
 
-xgb ИТОГО: accuracy=0.8406 ± 0.0236  roc_auc=0.8843  f1=0.7791
+Fold 1: acc=0.8715 auc=0.9132 f1=0.8217
+Fold 2: acc=0.8596 auc=0.8941 f1=0.8092  
+Fold 3: acc=0.8034 auc=0.8458 f1=0.7200
+Fold 4: acc=0.8315 auc=0.8807 f1=0.7692
+Fold 5: acc=0.8371 auc=0.8876 f1=0.7752
+
+xgb ИТОГО: accuracy=0.8406 ± 0.0236 roc_auc=0.8843 f1=0.7791
+</pre>
 
 ...
 | Модель     | Accuracy | ROC-AUC | F1-Score |
