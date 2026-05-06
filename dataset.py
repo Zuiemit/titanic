@@ -12,6 +12,7 @@ class Dataset:
         self.config = config
         self.data_checkpoint = {}   # хранит медианы, моды и прочие fit-значения
 
+    """Обработка данных: заполнение пропусков, feature engineering, кодирование."""
     def get_dataset(self, df_train: pd.DataFrame, df_test: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series]:
 
         y_train = df_train[self.config.target_col].copy()
@@ -41,6 +42,7 @@ class Dataset:
         assert X_test.isnull().sum().sum()  == 0, 'В X_test остались пропуски!'
 
         return X_train, X_test, y_train
+
 
     def _fill_missing(self, df: pd.DataFrame, fit: bool) -> pd.DataFrame:
         df = df.copy()
