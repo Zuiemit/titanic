@@ -12,8 +12,8 @@ class Dataset:
         self.config = config
         self.data_checkpoint = {}   # хранит медианы, моды и прочие fit-значения
 
-    """Обработка данных: заполнение пропусков, feature engineering, кодирование."""
     def get_dataset(self, df_train: pd.DataFrame, df_test: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series]:
+        """Обработка данных: заполнение пропусков, feature engineering, кодирование."""
 
         y_train = df_train[self.config.target_col].copy()
 

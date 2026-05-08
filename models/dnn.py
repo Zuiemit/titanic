@@ -167,8 +167,6 @@ class DNNClassifier:
                     val_logits = self.model_(X_val_t)
                     val_loss   = criterion(val_logits, y_val_t).item()
 
-                #print(f'Epoch {epoch+1}/{self.epochs} | val_loss={val_loss:.4f} | patience={patience_counter}/{self.patience}')
-
                 if val_loss < best_val_loss:
                     best_val_loss    = val_loss
                     patience_counter = 0

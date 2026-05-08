@@ -32,8 +32,8 @@ class Solver:
         self.meta_model = {}
         self._cached_ensemble_preds = None
 
-    """Обучение всех моделей по StratifiedKFold с метриками."""
     def fit(self, X: pd.DataFrame, y: pd.Series) -> Dict:
+        """Обучение всех моделей по StratifiedKFold с метриками."""
         os.makedirs(self.config.path_to_checkpoints, exist_ok=True)
 
         for model_name, should_train in self.config.to_train.items():
@@ -49,8 +49,8 @@ class Solver:
                             extra_params=self.config.dnn_params)
         return self.results
 
-    """Предсказание ансамблем (среднее по фолдам всех моделей)."""
     def predict(self, X: pd.DataFrame) -> np.ndarray:
+        """Предсказание ансамблем (среднее по фолдам всех моделей)."""
         all_probas = []
 
         for model_name, fold_models in self.models.items():
@@ -73,8 +73,8 @@ class Solver:
         avg_proba = np.mean(all_probas, axis=0)
         return (avg_proba >= 0.5).astype(int)
      
-    """Обучение мета-модели (LogReg) на OOF-предсказаниях базовых моделей."""
     def fit_stacking(self, X: pd.DataFrame, y: pd.Series) -> Dict:
+        """Обучение мета-модели (LogReg) на OOF-предсказаниях базовых моделей."""
         assert len(self.results) > 0, 'Сначала вызови fit()'
         stacking_features = pd.DataFrame(index=X.index)
         if self.config.meta_model_type == 'logreg':
@@ -99,8 +99,8 @@ class Solver:
         self.meta_model = lr_meta
         return self.meta_model
     
-    """Предсказание через stacking (базовые модели → мета-модель)."""
     def predict_stacking(self, X: pd.DataFrame) -> np.ndarray:
+        """Предсказание через stacking (базовые модели → мета-модель)."""
         test_features = pd.DataFrame(index=X.index)
         for model_name, fold_models in self.models.items():
             fold_probas = []
@@ -118,8 +118,8 @@ class Solver:
         final_pred = self.meta_model.predict(test_features)
         return final_pred
     
-    """Взвешенное предсказание (веса пропорциональны CV accuracy)."""
     def predict_weighted(self, X: pd.DataFrame) -> np.ndarray:
+        """Взвешенное предсказание (веса пропорциональны CV accuracy)."""
         all_probas = []
         norm_weights = {}
         acc_sum = sum(model['accuracy'] for model in self.results.values())
@@ -144,8 +144,8 @@ class Solver:
         avg_proba = np.sum(all_probas, axis=0)
         return (avg_proba >= 0.5).astype(int)
     
-    """Обучение всех режимов ансамбля (stacking/voting/weighted)."""
     def fit_ensemble(self, X, y):
+        """Обучение всех режимов ансамбля (stacking/voting/weighted)."""
         if self.config.ensemble_mode in ["stacking", "all"]:
             self.fit_stacking(X, y)
         if self.config.ensemble_mode == "all":
